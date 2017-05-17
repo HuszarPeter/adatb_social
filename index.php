@@ -1,5 +1,27 @@
 <?php
-echo("<pre>");
+    session_start();
+    if (isset($_SESSION["user"]))
+    {
+        // redirect to inner page
+        header("Location: wall.php");
+        exit();
+    }
+?>
+<html>
+    <head>
+        <title>Social</title>
+    </head>
+</html>
+<body>
+    <form method="post" action="login.php">
+        Usernév:<br/><input type="text" /><br/>
+        Jelszó:<br/><input type="password" /> 
+        <br/><button type="submit">Login</button>
+        <a href="register.php" >Regisztráció</a>
+    </form>
+</body>
+<?php
+/*echo("<pre>");
 
 $tns = "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) ) (CONNECT_DATA = (SERVICE_NAME = XE) ) )";
 $db_username = "SOCIAL";
@@ -16,5 +38,5 @@ try{
     echo ($e->getMessage());
 }
 
-echo("</pre>");
+echo("</pre>");*/
 ?>
