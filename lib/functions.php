@@ -21,6 +21,38 @@ function getConnection()
     return new PDO("oci:dbname=".$config["db"]["tns"].";charset=utf8",$config["db"]["user"],$config["db"]["pwd"]);
 }
 
+function fetch($conn, $query)
+{
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    $result = $statement->fetch();
+    return $result;
+}
+
+function q($sql)
+{
+    global $config;
+    try
+    {
+        $conn = getConnection();
+        $result = query($conn, $sql);
+        $conn = null;
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        echo($e->getMessage());
+    }
+}
+
+function query($conn, $query)
+{
+    $statement = $conn->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    return $result;
+}
+
 function getUserByLoginAndPassword($user, $password)
 {
     global $config;
@@ -30,10 +62,7 @@ function getUserByLoginAndPassword($user, $password)
         $conn = getConnection();
 
         $sql = "SELECT * FROM FELHASZNALO WHERE FELHASZNALO_NEV = '$user' AND JELSZO_HASH = '$password'";
-
-        $statement = $conn->prepare($sql);
-        $statement->execute();
-        $userRow = $statement->fetch();
+        $userRow = fetch($conn, $sql);
 
         if (!$userRow)
         {
