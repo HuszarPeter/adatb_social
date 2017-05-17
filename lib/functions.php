@@ -55,7 +55,7 @@ function query($conn, $query)
     return $result;
 }
 
-function sp($spname, $params)
+function sp($spname, $params = array())
 {
     global $config;
     try
@@ -71,15 +71,11 @@ function sp($spname, $params)
     }
 }
 
-function callStoredProcedure($conn, $spname, $params)
+function callStoredProcedure($conn, $spname, $params = array())
 {
     $sp = file_get_contents("sp/$spname.sql");
-
     $statement = $conn->prepare($sp);
-    foreach($params as $k=>$v){
-        $statement->bindParam($k,$v);
-    }
-    $s = $statement->execute();
+    $s = $statement->execute($params);
     $result = $statement->fetchAll();
     return $result;
 }

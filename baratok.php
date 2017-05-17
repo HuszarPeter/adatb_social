@@ -12,7 +12,7 @@ require_once("lib/functions.php");
     $friends = sp("friends", array(":userid" => $_SESSION["user"]));
     foreach($friends as $friend)
     {
-        echo("<div>");
+        echo("<div class=\"barat\" style=\"margin: 5px; border: solid 1px red;\">");
         echo("<div>");
         switch($friend["TIPUS"])
         {
