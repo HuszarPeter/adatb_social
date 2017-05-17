@@ -18,7 +18,9 @@ function dump($variable)
 function getConnection()
 {
     global $config;
-    return new PDO("oci:dbname=".$config["db"]["tns"].";charset=utf8",$config["db"]["user"],$config["db"]["pwd"]);
+    $result = new PDO("oci:dbname=".$config["db"]["tns"].";charset=utf8",$config["db"]["user"],$config["db"]["pwd"]);
+    $result->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $result;
 }
 
 function fetch($conn, $query)
@@ -49,6 +51,35 @@ function query($conn, $query)
 {
     $statement = $conn->prepare($query);
     $statement->execute();
+    $result = $statement->fetchAll();
+    return $result;
+}
+
+function sp($spname, $params)
+{
+    global $config;
+    try
+    {
+        $conn = getConnection();
+        $result = callStoredProcedure($conn, $spname, $params);
+        $conn = null;
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        echo($e->getMessage());
+    }
+}
+
+function callStoredProcedure($conn, $spname, $params)
+{
+    $sp = file_get_contents("sp/$spname.sql");
+
+    $statement = $conn->prepare($sp);
+    foreach($params as $k=>$v){
+        $statement->bindParam($k,$v);
+    }
+    $s = $statement->execute();
     $result = $statement->fetchAll();
     return $result;
 }

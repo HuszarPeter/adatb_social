@@ -1,0 +1,1 @@
+<a href="wall.php">Fal</a> | <a href="messages.php">Üzenetek</a> | <a href="logout.php">Kijelentkezés</a>

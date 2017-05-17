@@ -1,7 +1,5 @@
 <?php
-
 require_once("lib/functions.php");
-
 ?>
 
 <html>
@@ -9,15 +7,18 @@ require_once("lib/functions.php");
         <title>SOCIAL</title>
     </head>
     <body>
-        <p>User id : <?php echo($_SESSION["user"]); ?></p>
+    <?php include_once("fejlec.php");?>
 <?php
 
-    $users = q("SELECT * FROM FELHASZNALO");
-
-    dump($users);
-
+    $bejegyzesek = sp("FAL", array(":userid" => 3));
+    foreach($bejegyzesek as $row)
+    {
+        echo("<div class=\"bejegyzes\">");
+        echo("<div class=\"szerzo\">" . $row["NEV"] . "</div>");
+        echo("<div class=\"szoveg\">".$row["SZOVEG"]."</div>");
+        echo("<div class=\"tagek\">".$row["TAGEK"]."</div>");
+        echo("</div>");
+    }
 ?>
-
-        <a href="logout.php">Kijelentkezés</a>
     </body>
 </hrml>
