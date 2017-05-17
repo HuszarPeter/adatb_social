@@ -10,7 +10,7 @@ require_once("lib/functions.php");
     <?php include_once("fejlec.php");?>
 <?php
 
-    $bejegyzesek = sp("FAL", array(":userid" => 3));
+    $bejegyzesek = sp("FAL", array(":userid" => $_SESSION["user"]));
     foreach($bejegyzesek as $row)
     {
         echo("<div class=\"bejegyzes\">");
