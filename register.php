@@ -9,7 +9,7 @@
         Email:<br/><input type="email" name="email" value="" required ><br/>
         Jelszó:<br/><input type="password" name="jelszo" value="" required ><br/> 
         Jelszó megerősítés:<br/><input type="password" name="jelszo2" value="" required ><br/>
-        Családnév:<br/><input type="text" name="csaladnev" value="" ><br/>
+        Családnév:<br/><input type="text" name="vezeteknev" value="" ><br/>
         Keresztnév:<br/><input type="text" name="keresztnev" value="" ><br/>
         Születési dátum:<br/><input type="date" name="szulido" value="" ><br/>
         Névnap:<br/>
