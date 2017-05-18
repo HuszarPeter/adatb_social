@@ -177,12 +177,15 @@ function getUserByLoginAndPassword($user, $password)
         $conn = getConnection();
 
         $sql = "SELECT * FROM FELHASZNALO WHERE FELHASZNALO_NEV = '$user' AND JELSZO_HASH = '$password'";
+
         $userRow = fetch($conn, $sql);
 
         if (!$userRow)
         {
             return false;
         }
+
+        $_SESSION["user"] = $userRow["FELHASZNALO_ID"];
 
         $conn = null;
 
@@ -209,8 +212,6 @@ function getUserByLogin($user)
         {
             return false;
         }
-
-        $_SESSION["user"] = $userRow["FELHASZNALO_ID"];
 
         $conn = null;
 
