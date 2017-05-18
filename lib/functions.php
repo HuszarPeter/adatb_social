@@ -24,6 +24,12 @@ function getConnection()
     return $result;
 }
 
+function execute($conn, $sql)
+{
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+}
+
 function insert($conn, $sql, $idfield = "")
 {
     if (strlen($idfield) > 0)

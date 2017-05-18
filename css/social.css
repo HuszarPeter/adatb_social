@@ -23,3 +23,7 @@
     font-size: 0.9em;
     font-style: italic;
 }
+
+.bejegyzes .delete {
+    float: right;
+}

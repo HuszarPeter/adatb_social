@@ -21,6 +21,9 @@ require_once("lib/functions.php");
     foreach($bejegyzesek as $bejegyzes)
     {
         echo("<div class=\"bejegyzes\">");
+        if ($bejegyzes["FELHASZNALO_ID"] == $_SESSION["user"]) {
+            echo("<div class=\"delete\"><a href=\"delete_post.php?p=".$bejegyzes["BEJEGYZES_ID"]."\">törlés</a></div>");
+        }
         echo("<div class=\"szerzo\">" . $bejegyzes["NEV"] . "</div>");
         echo("<div class=\"szoveg\">".$bejegyzes["SZOVEG"]."</div>");
         echo("<div class=\"tagek\">".$bejegyzes["TAGEK"]."</div>");
