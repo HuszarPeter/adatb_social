@@ -27,7 +27,14 @@ require_once("lib/functions.php");
                 break;
         }
         echo($friend["NEV"]."</div>");
-        echo("<div><a href=\"messages.php?u=".$friend["FELHASZNALO_ID"]."\">Üzenetek</a></div>");
+        if ($friend["TIPUS"] == 0 && $friend["CEL_FELHASZNALO_ID"] == $_SESSION["user"])
+        {
+            echo ("<div><a href=\"visszaigazol.php?u=".$friend["FELHASZNALO_ID"]."\">Visszaigazol</a></div>");
+        }
+        else if ($friend["TIPUS"] == 1)
+        {
+            echo("<div><a href=\"messages.php?u=".$friend["FELHASZNALO_ID"]."\">Üzenetek</a></div>");
+        }
         echo("</div>");
     }
 ?>

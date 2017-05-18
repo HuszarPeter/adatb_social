@@ -71,6 +71,22 @@ function sp($spname, $params = array())
     }
 }
 
+function sp2($spname, $params = array())
+{
+    global $config;
+    try
+    {
+        $conn = getConnection();
+        $result = callStoredProcedure2($conn, $spname, $params);
+        $conn = null;
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        echo($e->getMessage());
+    }
+}
+
 function callStoredProcedure($conn, $spname, $params = array())
 {
     $sp = file_get_contents("sp/$spname.sql");
@@ -78,6 +94,14 @@ function callStoredProcedure($conn, $spname, $params = array())
     $s = $statement->execute($params);
     $result = $statement->fetchAll();
     return $result;
+}
+
+function callStoredProcedure2($conn, $spname, $params = array())
+{
+    $sp = file_get_contents("sp/$spname.sql");
+    $statement = $conn->prepare($sp);
+    $s = $statement->execute($params);
+    return $s;
 }
 
 function getUserByLoginAndPassword($user, $password)
