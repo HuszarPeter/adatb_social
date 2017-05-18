@@ -16,7 +16,8 @@ require_once("lib/functions.php");
         $aa = sp("profil", array(":userid" => $_SESSION["user"]));
         $user = $aa[0];
 
-        $honapok = array("Január", "Február", "Március", "Április", "Május", "Június", "Augusztus", "Szeptember", "Október", "November", "December");
+        $honapok = array("Január", "Február", "Március", "Április", "Május", "Június", "Július","Augusztus", "Szeptember", "Október", "November", "December");
+        
 
     ?>
     <h1>Profil</h1>
@@ -34,7 +35,7 @@ require_once("lib/functions.php");
         <div><?php echo($user["SZULETETT"]);?></div>
 
         <div class="lbl">Névnap</div>
-        <div><?php echo($honapok[$user["NEVNAPHONAP"]]);?> <?php echo($user["NEVNAPNAP"]);?></div>
+        <div><?php echo($honapok[$user["NEVNAPHONAP"]-1]);?> <?php echo($user["NEVNAPNAP"]);?></div>
 
         <hr/>
         <br/><button type="submit">OK</button>
