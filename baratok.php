@@ -40,5 +40,23 @@ require_once("lib/functions.php");
         echo("</div>");
     }
 ?>
+    <h1>Kit ismerhetek?</h1>
+<?php
+
+    $ajanlas = sp("kitismerhetek", array(":userid" => $_SESSION["user"]));
+    if (count($ajanlas) == 0) {
+        echo ("<div>Nincs ajánlható felhasználó</div>");
+    }
+    else
+    {
+        foreach($ajanlas as $row)
+        {
+            echo("<div class=\"ismerhetem\">");
+            echo("<div><img src=\"img.php?id=".$row["FELHASZNALO_ID"]."\" class=\"img\"/>" . $row["NEV"]);
+            echo(" | <a href=\"ismerosnek_jelol.php?u=".$row["FELHASZNALO_ID"]."\">ismerem</a></div>");
+            echo("</div>");
+        }
+    }
+?>
     </body>
 </html>
