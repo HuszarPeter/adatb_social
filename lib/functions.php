@@ -23,6 +23,22 @@ function getConnection()
     return $result;
 }
 
+function f($sql)
+{
+    global $config;
+    try
+    {
+        $conn = getConnection();
+        $result = fetch($conn, $sql);
+        $conn = null;
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        echo($e->getMessage());
+    }
+}
+
 function fetch($conn, $query)
 {
     $statement = $conn->prepare($query);

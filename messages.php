@@ -8,6 +8,7 @@ require_once("lib/functions.php");
     </head>
     <body>
     <?php include_once("fejlec.php");?>
+    <h1>Üzenetek</h1>
 <?php
     if (isset($_GET["u"]))
     {

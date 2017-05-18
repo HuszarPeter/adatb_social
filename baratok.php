@@ -8,6 +8,7 @@ require_once("lib/functions.php");
     </head>
     <body>
     <?php include_once("fejlec.php");?>
+    <h1>Barátok</h1>
 <?php
     $friends = sp("friends", array(":userid" => $_SESSION["user"]));
     foreach($friends as $friend)

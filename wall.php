@@ -8,6 +8,7 @@ require_once("lib/functions.php");
     </head>
     <body>
     <?php include_once("fejlec.php");?>
+    <h1>Fal</h1>
 <?php
     $bejegyzesek = sp("FAL", array(":userid" => $_SESSION["user"]));
     foreach($bejegyzesek as $bejegyzes)
