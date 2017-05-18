@@ -1,3 +1,25 @@
 .profil .lbl {
     margin-top: 25px;
 }
+
+.bejegyzes {
+    margin: 20px;
+    border: solid lightblue 1px;
+    background: lightcyan;
+    padding: 3px;
+}
+
+.bejegyzes .szerzo {
+    font-size: 0.8em;
+    text-align: left;
+}
+
+.bejegyzes .szoveg {
+    margin: 5px;
+    font-size: 1.1em;
+}
+
+.bejegyzes .tagek {
+    font-size: 0.9em;
+    font-style: italic;
+}

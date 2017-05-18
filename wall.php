@@ -5,6 +5,7 @@ require_once("lib/functions.php");
 <html>
     <head>
         <title>SOCIAL</title>
+        <link rel="stylesheet" type="text/css" href="css/social.css">
     </head>
     <body>
     <?php include_once("fejlec.php");?>
@@ -19,7 +20,7 @@ require_once("lib/functions.php");
     $bejegyzesek = sp("FAL", array(":userid" => $_SESSION["user"]));
     foreach($bejegyzesek as $bejegyzes)
     {
-        echo("<div class=\"bejegyzes\" style=\"margin: 5px; border: solid 1px red;\">");
+        echo("<div class=\"bejegyzes\">");
         echo("<div class=\"szerzo\">" . $bejegyzes["NEV"] . "</div>");
         echo("<div class=\"szoveg\">".$bejegyzes["SZOVEG"]."</div>");
         echo("<div class=\"tagek\">".$bejegyzes["TAGEK"]."</div>");
