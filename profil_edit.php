@@ -24,7 +24,7 @@ if (isset($_POST["jelszo"]) && isset($_POST["email"]))
         {
             echo ($e->getMessage());
         }
-   // redirect("index.php");
+   redirect("index.php");
     
 }
 
