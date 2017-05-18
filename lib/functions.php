@@ -6,6 +6,7 @@ session_start();
 function redirect ($url)
 {
     header ("Location: $url");
+    exit();
 }
 
 function dump($variable)
@@ -176,8 +177,6 @@ function getUserByLoginAndPassword($user, $password)
         {
             return false;
         }
-
-        $_SESSION["user"] = $userRow["FELHASZNALO_ID"];
 
         $conn = null;
 

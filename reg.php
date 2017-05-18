@@ -1,8 +1,8 @@
 <?php
 
 include_once("lib/functions.php");
-
-if (isset($_POST["usernev"]) && isset($_POST["jelszo"]) && isset($_POST[""]))
+dump($_POST);
+if (isset($_POST["usernev"]) && isset($_POST["jelszo"]) && isset($_POST["email"]))
 {
     // van jelszo, csinaljunk md5-ot
     // ellenorizzuk le a db-ben
@@ -11,10 +11,15 @@ if (isset($_POST["usernev"]) && isset($_POST["jelszo"]) && isset($_POST[""]))
     $success = getUserByLogin($_POST["usernev"]);
     if ($success)
     {
-        redirect("wall.php");
+         redirect("register.php");
+       
+    }else{
+        
+        redirect("index.php");
     }
 }
 
-redirect("register.php");
+
+
 
 ?>
