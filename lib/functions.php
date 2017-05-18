@@ -23,6 +23,22 @@ function getConnection()
     return $result;
 }
 
+function insert($conn, $sql, $idfield = "")
+{
+    if (strlen($idfield) > 0)
+    {
+        $stmt = $conn->prepare($sql . " RETURNING $idfield INTO :insert_result_variable");
+        $stmt->bindParam(":insert_result_variable", $result, PDO::PARAM_INT, 8);
+        $stmt->execute();
+        return $result;
+    }
+    else
+    {
+        $stmt = $conn->prepare($sql);
+        return $stmt->execute();
+    }
+}
+
 function f($sql)
 {
     global $config;
@@ -87,6 +103,23 @@ function sp($spname, $params = array())
     }
 }
 
+function isp($spname, $params = array())
+{
+    global $config;
+    try
+    {
+        $conn = getConnection();
+        $result = icallStoredProcedure($conn, $spname, $params);
+        $result = $conn->lastInsertId();
+        $conn = null;
+        return $result;
+    }
+    catch(PDOException $e)
+    {
+        echo($e->getMessage());
+    }
+}
+
 function sp2($spname, $params = array())
 {
     global $config;
@@ -113,6 +146,14 @@ function callStoredProcedure($conn, $spname, $params = array())
 }
 
 function callStoredProcedure2($conn, $spname, $params = array())
+{
+    $sp = file_get_contents("sp/$spname.sql");
+    $statement = $conn->prepare($sp);
+    $s = $statement->execute($params);
+    return $s;
+}
+
+function icallStoredProcedure($conn, $spname, $params = array())
 {
     $sp = file_get_contents("sp/$spname.sql");
     $statement = $conn->prepare($sp);
