@@ -132,4 +132,32 @@ function getUserByLoginAndPassword($user, $password)
     }
 }
 
+function getUserByLogin($user)
+{
+    global $config;
+
+    try
+    {
+        $conn = getConnection();
+
+        $sql = "SELECT * FROM FELHASZNALO WHERE FELHASZNALO_NEV = '$user'";
+        $userRow = fetch($conn, $sql);
+
+        if (!$userRow)
+        {
+            return false;
+        }
+
+        $_SESSION["user"] = $userRow["FELHASZNALO_ID"];
+
+        $conn = null;
+
+        return true;
+    } 
+    catch(PDOException $e) 
+    {
+        echo ($e->getMessage());
+    }
+}
+
 ?>
