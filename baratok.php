@@ -5,6 +5,7 @@ require_once("lib/functions.php");
 <html>
     <head>
         <title>SOCIAL</title>
+        <link rel="stylesheet" type="text/css" href="css/social.css">
     </head>
     <body>
     <?php include_once("fejlec.php");?>
@@ -13,18 +14,18 @@ require_once("lib/functions.php");
     $friends = sp("friends", array(":userid" => $_SESSION["user"]));
     foreach($friends as $friend)
     {
-        echo("<div class=\"barat\" style=\"margin: 5px; border: solid 1px red;\">");
-        echo("<div>");
+        echo("<div class=\"barat\" class=\"barat\">");
+        echo("<div><img src=\"img.php?id=".$friend["FELHASZNALO_ID"]."\" class=\"img\" />");
         switch($friend["TIPUS"])
         {
             case 0:
-                echo("<span>Függő </span>");
+                echo("<span>(Függő)</span>");
                 break;
             case 1:
-                echo("<span>Visszaigazolt </span>");
+                echo("<span>(Visszaigazolt)</span>");
                 break;
             case 2:
-                echo("<span>Elutasítva </span>");
+                echo("<span>(Elutasítva)</span>");
                 break;
         }
         echo($friend["NEV"]."</div>");
