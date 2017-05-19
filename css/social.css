@@ -1,3 +1,6 @@
+body {
+    font-family: Arial;
+}
 .profil .lbl {
     margin-top: 25px;
 }
@@ -12,6 +15,9 @@
 .bejegyzes .szerzo {
     font-size: 0.8em;
     text-align: left;
+    position: relative;
+    left: 50px;
+    top: -45px;
 }
 
 .bejegyzes .szoveg {
@@ -26,6 +32,18 @@
 
 .bejegyzes .delete {
     float: right;
+}
+
+.uzenet .img {
+    border-radius: 20px;
+}
+
+.uzenet .szoveg {
+    border-radius: 10px;
+    background-color: lightgrey;
+    padding: 5px;
+    top: -20px;
+    position: relative;
 }
 
 .img {

@@ -5,6 +5,7 @@ require_once("lib/functions.php");
 <html>
     <head>
         <title>SOCIAL</title>
+        <link rel="stylesheet" type="text/css" href="css/social.css">
     </head>
     <body>
     <?php include_once("fejlec.php");?>
@@ -20,10 +21,11 @@ require_once("lib/functions.php");
     }
     foreach($uzenetek as $uzenet)
     {
-        echo("<div class=\"uzenet\" style=\"margin: 5px; border: solid 1px red;\">");
-        echo("<div>".$uzenet["K"]."</div>");
-        echo("<div>".$uzenet["SZOVEG"]."</div>");
-        echo("<div>".$uzenet["LETREHOZVA"]."</div>");
+        echo("<div class=\"uzenet\">");
+        // echo("<div>".$uzenet["K"]."</div>");
+        echo("<span><img class=\"img\" src=\"img.php?id=".$uzenet["KULDO_FELHASZNALO_ID"]."\" /></span>");
+        echo("<span class=\"szoveg\">".$uzenet["SZOVEG"]."</span>");
+        // echo("<div>".$uzenet["LETREHOZVA"]."</div>");
         echo("</div>");
     }
 ?>
