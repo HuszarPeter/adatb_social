@@ -1,12 +1,11 @@
 <?php
 
 require_once("lib/functions.php");
-dump($_FILES);
 if (isset($_FILES['kep']) && $_FILES['kep']['size'] > 0 ) 
 { 
    $tmpName  = $_FILES['kep']['tmp_name'];  
    $fp = fopen($tmpName, 'rb'); // read binary
-   $albumid = (strlen($_POST["album"]) > 0) ? $_POST["album"] : "NULL";
+   $albumid = (isset($_POST["album"])) ? $_POST["album"] : "NULL";
 
    try
     {
@@ -30,6 +29,6 @@ if (isset($_FILES['kep']) && $_FILES['kep']['size'] > 0 )
     }
     fclose($fp);
 }
-//redirect("albumok.php");
+redirect("albumok.php");
 
 ?>

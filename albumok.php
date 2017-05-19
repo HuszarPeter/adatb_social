@@ -23,7 +23,7 @@ $kepek = sp("albumokkepek", array(":userid" => $_SESSION["user"]));
         <input type="submit" value ="Kép feltöltése"/>  
         Album választás:
         <select name="album">
-            <option value="NULL"></option>
+            <option value=""></option>
             <?php
             foreach($albumok as $album){
                 echo("<option value=".$album["ALBUM_ID"].">".$album["CIM"]."</option>");

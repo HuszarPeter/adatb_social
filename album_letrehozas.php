@@ -8,7 +8,7 @@ if (isset($_POST["album"])) {
     {
         $conn = getConnection();
 
-        execute($conn, "INSERT INTO ALBUM (TULAJDONOS_ID,CIM,LATHATOSAG) VALUES (".$_SESSION["user"].",'".$_POST["album"]."',1)");
+        execute($conn, "INSERT INTO ALBUM (TUALJDONOS_ID,CIM,LATHATOSAG) VALUES (".$_SESSION["user"].",'".$_POST["album"]."',1)");
 
     }
     catch(PDOException $e){
