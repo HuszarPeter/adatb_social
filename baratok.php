@@ -31,7 +31,7 @@ require_once("lib/functions.php");
         echo($friend["NEV"]."</div>");
         if ($friend["TIPUS"] == 0 && $friend["CEL_FELHASZNALO_ID"] == $_SESSION["user"])
         {
-            echo ("<div><a href=\"visszaigazol.php?u=".$friend["FELHASZNALO_ID"]."\">Visszaigazol</a></div>");
+            echo ("<div><a href=\"visszaigazol.php?u=".$friend["FELHASZNALO_ID"]."\">Visszaigazol</a> | <a href=\"visszaigazol.php?u=".$friend["FELHASZNALO_ID"]."&i=-1\">Elutasít</a></div>");
         }
         else if ($friend["TIPUS"] == 1)
         {

@@ -29,10 +29,14 @@ require_once("lib/functions.php");
     
         $aa = sp("profil", array(":userid" => $_SESSION["user"]));
         $user = $aa[0];
+<<<<<<< HEAD
         $munkahely = sp("munkahely", array(":userid" => $_SESSION["user"]));
         $iskola = sp("iskola", array(":userid" => $_SESSION["user"]));
         
         $honapok = array("Január", "Február", "Március", "Április", "Május", "Június", "Július","Augusztus", "Szeptember", "Október", "November", "December");
+=======
+        
+>>>>>>> origin/develop
         $newdatum = date('Y-m-d', strtotime($user["SZULETETT"]));
 
     ?>
