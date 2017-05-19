@@ -30,8 +30,11 @@ require_once("lib/functions.php");
             echo("<h2 class=\"albumheader\">.:".$kep["CIM"].":.</h2>");
             $albumid = $kep["ALBUM_ID"];
         }
-        echo("<div class=\"albumkep\"><img class=\"img\" src=\"img.php?id=".$kep["KEP_ID"]."\">");
-        echo("</br><a href=\"delete_kep.php?p=".$kep["KEP_ID"]."\">Törlés</a> | <a href=\"y.php\">Beállítás Profilképként</a></div>");
+        if($kep["KEP_ID"] != NULL)
+        {
+            echo("<div class=\"albumkep\"><img class=\"img\" src=\"img.php?id=".$kep["KEP_ID"]."\">");
+            echo("</br><a href=\"delete_kep.php?p=".$kep["KEP_ID"]."\">Törlés</a> | <a href=\"y.php\">Beállítás Profilképként</a></div>");
+        }
       
     }
 ?>
