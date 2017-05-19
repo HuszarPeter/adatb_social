@@ -71,3 +71,10 @@ body {
     width: 300px;
     height: 300px;
 }
+
+.wall_img {
+    float: left;
+    border: solid 1px gray;
+    margin: 2px;
+    width: 200px;
+}
