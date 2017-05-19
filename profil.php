@@ -29,12 +29,16 @@ require_once("lib/functions.php");
     
         $aa = sp("profil", array(":userid" => $_SESSION["user"]));
         $user = $aa[0];
-
+        $munkahely = sp("munkahely", array(":userid" => $_SESSION["user"]));
+        $iskola = sp("iskola", array(":userid" => $_SESSION["user"]));
         $newdatum = date('Y-m-d', strtotime($user["SZULETETT"]));
 
     ?>
     <h1>Profil</h1>
     <form method="post" action="profil_edit.php" class="profil" onsubmit="return validate(this);">
+        
+        <div><?php echo("<img class=\"img\" src=\"img.php?id=".$user["KEP_ID"]."\" />");?></div>
+
         <div class="lbl">Felhasználónév:</div>
         <div><?php echo($user["FELHASZNALO_NEV"]);?></div>
 
