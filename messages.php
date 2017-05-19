@@ -28,6 +28,15 @@ require_once("lib/functions.php");
         // echo("<div>".$uzenet["LETREHOZVA"]."</div>");
         echo("</div>");
     }
+
+    if (isset($_GET["u"]))
+    {
+        $u = $_GET["u"];
+        echo("<form action=\"sendmessage.php?u=$u\" method=\"post\">");
+        echo("<textarea name=\"msg\" rows=5 cols=80 ></textarea>");
+        echo("<button type=\"submit\">Küld</button>");
+        echo("</form>");
+    }
 ?>
     </body>
 </html>
