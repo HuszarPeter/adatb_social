@@ -78,3 +78,35 @@ body {
     margin: 2px;
     width: 200px;
 }
+
+.csoport {
+    float: left;
+    width: 300px;
+    border: solid 1px gray;
+    background: lightgray;
+}
+
+.csoport .nev {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.csoport .leiras {
+    font-size: 0.9em;
+    font-style: italic;
+    margin: 3px;
+}
+
+.csoport .tagok {
+    top: 5px;
+    right: 5px;
+}
+
+.csoport .tag {
+    font-size: 0.8em;
+    margin-left: 40px;
+}
+
+.csoport {
+    margin: 10px;
+}
