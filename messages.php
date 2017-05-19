@@ -23,7 +23,7 @@ require_once("lib/functions.php");
     {
         echo("<div class=\"uzenet\">");
         // echo("<div>".$uzenet["K"]."</div>");
-        echo("<span><img class=\"img\" src=\"img.php?id=".$uzenet["KULDO_FELHASZNALO_ID"]."\" /></span>");
+        echo("<span><img class=\"img\" src=\"img.php?id=".$uzenet["KEP_ID"]."\" /></span>");
         echo("<span class=\"szoveg\">".$uzenet["SZOVEG"]."</span>");
         // echo("<div>".$uzenet["LETREHOZVA"]."</div>");
         echo("</div>");

@@ -15,7 +15,7 @@ require_once("lib/functions.php");
     foreach($friends as $friend)
     {
         echo("<div class=\"barat\" class=\"barat\">");
-        echo("<div><img src=\"img.php?id=".$friend["FELHASZNALO_ID"]."\" class=\"img\" />");
+        echo("<div><img src=\"img.php?id=".$friend["KEP_ID"]."\" class=\"img\" />");
         switch($friend["TIPUS"])
         {
             case 0:
@@ -52,7 +52,7 @@ require_once("lib/functions.php");
         foreach($ajanlas as $row)
         {
             echo("<div class=\"ismerhetem\">");
-            echo("<div><img src=\"img.php?id=".$row["FELHASZNALO_ID"]."\" class=\"img\"/>" . $row["NEV"]);
+            echo("<div><img src=\"img.php?id=".$row["KEP_ID"]."\" class=\"img\"/>" . $row["NEV"]);
             echo(" | <a href=\"ismerosnek_jelol.php?u=".$row["FELHASZNALO_ID"]."\">ismerem</a></div>");
             echo("</div>");
         }
