@@ -29,8 +29,7 @@ require_once("lib/functions.php");
     
         $aa = sp("profil", array(":userid" => $_SESSION["user"]));
         $user = $aa[0];
-
-        $honapok = array("Január", "Február", "Március", "Április", "Május", "Június", "Július","Augusztus", "Szeptember", "Október", "November", "December");
+        
         $newdatum = date('Y-m-d', strtotime($user["SZULETETT"]));
 
     ?>

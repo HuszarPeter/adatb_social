@@ -4,4 +4,6 @@ $config["db"]["tns"] = "(DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TC
 $config["db"]["user"] = "SOCIAL";
 $config["db"]["pwd"] = "xxx";
 
+
+$honapok = array("Január", "Február", "Március", "Április", "Május", "Június", "Július","Augusztus", "Szeptember", "Október", "November", "December");
 ?>
