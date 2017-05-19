@@ -30,6 +30,7 @@ require_once("lib/functions.php");
             echo ("<div class=\"tag\">$nev </div>");
         }
 
+        echo("<a href=\"klub_kilep.php?id=$id\">Kilépek</a>");
         echo("</div>");
     }
 ?>
@@ -53,6 +54,7 @@ require_once("lib/functions.php");
             echo ("<div class=\"tag\">$nev </div>");
         }
 
+        echo("<a href=\"klub_belep.php?id=$id\">Belépek</a>");
         echo("</div>");   
     }
 ?>
