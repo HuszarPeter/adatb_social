@@ -24,6 +24,36 @@ function getConnection()
     return $result;
 }
 
+function e($sql)
+{
+    global $config;
+    
+    try
+    {
+        $conn = getConnection();
+        execute($conn, $sql);
+        $conn = null;
+    }
+    catch(PDOException $e)
+    {
+        die($e->getMessage());
+    }
+}
+
+function i($sql, $idfield = "")
+{
+    try
+    {
+        $conn = getConnection();
+        insert($conn, $sql, $idfield);
+        $conn = null;
+    }
+    catch(PDOException $e)
+    {
+        die($e->getMessage());
+    }
+}
+
 function execute($conn, $sql)
 {
     $stmt = $conn->prepare($sql);

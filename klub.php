@@ -30,7 +30,32 @@ require_once("lib/functions.php");
             echo ("<div class=\"tag\">$nev </div>");
         }
 
+        echo("<a href=\"klub_kilep.php?id=$id\">Kilépek</a>");
         echo("</div>");
+    }
+?>
+    <br style="clear:both"/><h1>Ismerősök csoportjai</h1>
+<?php
+    $ajanl = sp("csoport_ajanl", array(":userid" => $_SESSION["user"]));
+    foreach($ajanl as $csoport)
+    {
+        $id = $csoport["CSOPORT_ID"];
+        $nev = $csoport["NEV"];
+        $leiras = $csoport["LEIRAS"];
+        $tagok = $csoport["CNT"];
+        echo("<div class=\"csoport\">");
+        echo("<div class=\"nev\">$nev ($tagok)</div>");
+        echo("<div class=\"leiras\">$leiras</div>");
+
+        $tagok = sp ("csoport_tagok", array(":csoportid" => $id));
+        foreach($tagok as $tag)
+        {
+            $nev = $tag["NEV"];
+            echo ("<div class=\"tag\">$nev </div>");
+        }
+
+        echo("<a href=\"klub_belep.php?id=$id\">Belépek</a>");
+        echo("</div>");   
     }
 ?>
     </div>
