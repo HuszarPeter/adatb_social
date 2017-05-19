@@ -3,7 +3,21 @@
 require_once("lib/functions.php");
 
 ?>
+
 <html>
+    <script>
+        function validate(form) {
+        var e = form.elements;
+
+        /* Your validation code. */
+
+        if(e['jelszo'].value != e['jelszo2'].value) {
+            alert('A két jelszó nem eggyezik meg!');
+            return false;
+        }
+        return true;
+        }
+    </script>
     <head>
         <title>SOCIAL</title>
         <link rel="stylesheet" type="text/css" href="css/social.css">
@@ -21,12 +35,15 @@ require_once("lib/functions.php");
 
     ?>
     <h1>Profil</h1>
-    <form method="post" action="profil_edit.php" class="profil">
+    <form method="post" action="profil_edit.php" class="profil" onsubmit="return validate(this);">
         <div class="lbl">Felhasználónév:</div>
         <div><?php echo($user["FELHASZNALO_NEV"]);?></div>
 
         <div class="lbl">Jelszo:</div>
         <input type="password" name="jelszo" value="<?php echo($user["JELSZO_HASH"]);?>" required ><br/>
+
+        <div class="lbl">Jelszo megerősítés:</div>
+        <input type="password" name="jelszo2" value="<?php echo($user["JELSZO_HASH"]);?>" required ><br/>
 
         <div class="lbl">Email:</div>
         <input type="email" name="email" value="<?php echo($user["EMAIL"]);?>" required ><br/>

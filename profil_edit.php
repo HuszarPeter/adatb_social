@@ -1,7 +1,8 @@
 <?php
 
 include_once("lib/functions.php");
-dump($_POST);
+
+//dump($_POST);
 if (isset($_POST["jelszo"]) && isset($_POST["email"]))
 {
    
