@@ -1,7 +1,6 @@
 <?php
 require_once("lib/functions.php");
 ?>
-
 <html>
     <head>
         <title>SOCIAL</title>
@@ -13,15 +12,21 @@ require_once("lib/functions.php");
 <?php
 
     $nevnaposok = sp("nevnaposok", array(":userid" => $_SESSION["user"]));
-    foreach($nevnaposok as $nevnapos)
+    if(count($nevnaposok) == 0 ){
+        echo("<p>Ebben a hónapban nincs egy ismerősének sem névnapja sem pedig szülinapja</p>");
+    }
+    else 
     {
-        $lbl = $nevnapos["NEVNAP"] == "1" ? "Névnap: " : "Szülinap :";
-        $datum = $nevnapos["NEVNAP"] == "1" 
-            ? $honapok[$nevnapos["NEVNAPHONAP"]-1].". ".$nevnapos["NEVNAPNAP"]
-            : $honapok[$nevnapos["SZULHONAP"]-1].". ".$nevnapos["SZULNAP"];
+        foreach($nevnaposok as $nevnapos)
+        {
+            $lbl = $nevnapos["NEVNAP"] == "1" ? "Névnap: " : "Szülinap :";
+            $datum = $nevnapos["NEVNAP"] == "1" 
+                ? $honapok[$nevnapos["NEVNAPHONAP"]-1].". ".$nevnapos["NEVNAPNAP"]
+                : $honapok[$nevnapos["SZULHONAP"]-1].". ".$nevnapos["SZULNAP"];
 
-        echo("<div>".$nevnapos["NEV"]."</div>");
-        echo("<div>$lbl $datum</div>");
+            echo("<div>".$nevnapos["NEV"]."</div>");
+            echo("<div>$lbl $datum</div>");
+        }
     }
 ?>
     </body>

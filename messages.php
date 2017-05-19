@@ -13,29 +13,34 @@ require_once("lib/functions.php");
 <?php
     if (isset($_GET["u"]))
     {
-        $uzenetek = sp("messages", array(":userid" => $_SESSION["user"], ":masik" => $_GET["u"]));
+        $u = $_GET["u"];
+        $uzenetek = sp("messages", array(":userid" => $_SESSION["user"], ":masik" => $u), PDO::FETCH_GROUP | PDO::FETCH_ASSOC);
+        foreach($uzenetek as $nap =>$lista)
+        {
+            echo("<h2>$nap</h2>");
+            foreach($lista as $uzenet)
+            {
+                echo("<div class=\"uzenet\">");
+                echo("<span><img class=\"img\" src=\"img.php?id=".$uzenet["KEP_ID"]."\" /></span>");
+                echo("<span class=\"szoveg\">".$uzenet["SZOVEG"]."</span>");
+                echo("</div>");
+            }
+        }
+        echo("<form action=\"sendmessage.php?u=$u\" method=\"post\">");
+        echo("<textarea name=\"msg\" rows=5 cols=80 ></textarea><br/>");
+        echo("<button type=\"submit\">Küld</button>");
+        echo("</form>");
     }
     else
     {
         $uzenetek = sp("allmessages", array(":userid" => $_SESSION["user"]));
-    }
-    foreach($uzenetek as $uzenet)
-    {
-        echo("<div class=\"uzenet\">");
-        // echo("<div>".$uzenet["K"]."</div>");
-        echo("<span><img class=\"img\" src=\"img.php?id=".$uzenet["KEP_ID"]."\" /></span>");
-        echo("<span class=\"szoveg\">".$uzenet["SZOVEG"]."</span>");
-        // echo("<div>".$uzenet["LETREHOZVA"]."</div>");
-        echo("</div>");
-    }
-
-    if (isset($_GET["u"]))
-    {
-        $u = $_GET["u"];
-        echo("<form action=\"sendmessage.php?u=$u\" method=\"post\">");
-        echo("<textarea name=\"msg\" rows=5 cols=80 ></textarea>");
-        echo("<button type=\"submit\">Küld</button>");
-        echo("</form>");
+        foreach($uzenetek as $uzenet)
+        {
+            echo("<div class=\"uzenet\">");
+            echo("<span><img class=\"img\" src=\"img.php?id=".$uzenet["KEP_ID"]."\" /></span>");
+            echo("<span class=\"szoveg\">".$uzenet["SZOVEG"]."</span>");
+            echo("</div>");
+        }
     }
 ?>
     </body>

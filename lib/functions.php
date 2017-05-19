@@ -94,13 +94,13 @@ function query($conn, $query)
     return $result;
 }
 
-function sp($spname, $params = array())
+function sp($spname, $params = array(), $extra = NULL)
 {
     global $config;
     try
     {
         $conn = getConnection();
-        $result = callStoredProcedure($conn, $spname, $params);
+        $result = callStoredProcedure($conn, $spname, $params, $extra);
         $conn = null;
         return $result;
     }
@@ -143,12 +143,12 @@ function sp2($spname, $params = array())
     }
 }
 
-function callStoredProcedure($conn, $spname, $params = array())
+function callStoredProcedure($conn, $spname, $params = array(), $extra = NULL)
 {
     $sp = file_get_contents("sp/$spname.sql");
     $statement = $conn->prepare($sp);
     $s = $statement->execute($params);
-    $result = $statement->fetchAll();
+    $result = $statement->fetchAll($extra);
     return $result;
 }
 

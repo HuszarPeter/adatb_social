@@ -1,4 +1,5 @@
 SELECT 
+    TO_CHAR(LETREHOZVA, 'YYYY-MM-DD') as nap,
     KULDO_FELHASZNALO_ID,
     K,
     SZOVEG,
