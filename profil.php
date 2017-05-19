@@ -29,7 +29,9 @@ require_once("lib/functions.php");
     
         $aa = sp("profil", array(":userid" => $_SESSION["user"]));
         $user = $aa[0];
-
+        $munkahely = sp("munkahely", array(":userid" => $_SESSION["user"]));
+        $iskola = sp("iskola", array(":userid" => $_SESSION["user"]));
+        
         $honapok = array("Január", "Február", "Március", "Április", "Május", "Június", "Július","Augusztus", "Szeptember", "Október", "November", "December");
         $newdatum = date('Y-m-d', strtotime($user["SZULETETT"]));
 
@@ -60,6 +62,23 @@ require_once("lib/functions.php");
         <input type="number" name="nevnapho" value="<?php echo($user["NEVNAPHONAP"]);?>" min="1" max="12" required >Hó
         <input type="number" name="nevnapnap" value="<?php echo($user["NEVNAPNAP"]);?>" min="1" max="31"required >Nap
 
+        <div class="lbl">Munkahelyek:</div>
+        <div><?php 
+            foreach($munkahely as $m){
+                echo($m["CEGNEV"]);
+                if ($m["AKTUALIS"] == 1){
+                    echo(" (Aktuális)");
+                }
+                echo("<br />");
+            }
+        ?></div>
+        <div class="lbl">Iskolák:</div>
+        <div><?php
+            foreach($iskola as $n){
+                echo($n["NEV"]);
+                echo("<br />");
+            }
+        ?></div>
         <hr/>
         <br/><button type="submit">Mentés</button>
     </form>
