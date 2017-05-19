@@ -64,22 +64,21 @@ require_once("lib/functions.php");
         <input type="number" name="nevnapnap" value="<?php echo($user["NEVNAPNAP"]);?>" min="1" max="31"required >Nap
 
         <div class="lbl">Munkahelyek:</div>
-        <div><?php 
+        <div><ul><?php 
             foreach($munkahely as $m){
-                echo($m["CEGNEV"]);
+                echo("<li>" . $m["CEGNEV"]);
                 if ($m["AKTUALIS"] == 1){
                     echo(" (Aktuális)");
                 }
-                echo("<br />");
+                echo("</li>");
             }
-        ?></div>
+        ?></ul></div>
         <div class="lbl">Iskolák:</div>
-        <div><?php
+        <div><ul><?php
             foreach($iskola as $n){
-                echo($n["NEV"]);
-                echo("<br />");
+                echo("<li>" . $n["NEV"] . "</li>");
             }
-        ?></div>
+        ?></ul></div>
         <hr/>
         <br/><button type="submit">Mentés</button>
     </form>
